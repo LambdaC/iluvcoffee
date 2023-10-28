@@ -11,28 +11,30 @@ export class CoffeesController {
     @Get('/')
     findAll(@Query() query) {
         const { limit, offset } = query;
-        return `This action return all coffees. Limit:${limit}, Offset:${offset}`;
+        return this.coffeesService.findAll();
     }
 
     @Get(':id')
     findOne(@Param() params, @Param('id') id: string) {
         console.log(params);
-        return `This action returns #${id} coffee, param is ${params}`;
+        return this.coffeesService.findOne(id);
     }
 
     @Post()
     // @HttpCode(HttpStatus.GONE)
     create(@Body() body) {
-        return body;
+        return this.coffeesService.create(body);
     }
 
     @Patch(':id')
     update(@Param('id') id: string, @Body() body) {
-        return `This action updates #${id} coffee`;
+        // return `This action updates #${id} coffee`;
+        return this.coffeesService.update(id, body);
     }
 
     @Delete(':id')
     remove(@Param('id') id: string) {
-        return `This action removes #${id} coffee`;
+        // return `This action removes #${id} coffee`;
+        return this.coffeesService.remove(id)
     }
 }
