@@ -35,7 +35,7 @@ export class CoffeesService {
 
     update(id: string, updateCoffeeDto: UpdateCoffeeDto) {
         const existingCoffee = this.findOne(id);
-        if (existingCoffee instanceof Coffee) {
+        if (!(existingCoffee instanceof NotFoundException)) {
             existingCoffee.name = updateCoffeeDto.name ?? existingCoffee.name;
             existingCoffee.brand = updateCoffeeDto.brand ?? existingCoffee.brand;
             existingCoffee.flavors = updateCoffeeDto.flavors ?? existingCoffee.flavors;
