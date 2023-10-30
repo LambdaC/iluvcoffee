@@ -17,7 +17,7 @@ export class CoffeesController {
     }
 
     @Get(':id')
-    findOne(@Param() params, @Param('id') id: string) {
+    findOne(@Param() params, @Param('id') id: number) {
         console.log(params);
         return this.coffeesService.findOne(id);
     }
@@ -29,7 +29,7 @@ export class CoffeesController {
     }
 
     @Patch(':id')
-    update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeeDto) {
+    update(@Param('id') id: number, @Body() updateCoffeeDto: UpdateCoffeeDto) {
         // return `This action updates #${id} coffee`;
         return this.coffeesService.update(id, updateCoffeeDto);
     }

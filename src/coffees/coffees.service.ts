@@ -21,8 +21,8 @@ export class CoffeesService {
         return this.coffees;
     }
 
-    findOne(id: string) {
-        const coffee = this.coffees.find(item => item.id === +id);
+    findOne(id: number) {
+        const coffee = this.coffees.find(item => item.id === id);
         if (!coffee) {
             return new NotFoundException(`Coffee ${id} Not Found`);
         }
@@ -33,7 +33,7 @@ export class CoffeesService {
         this.coffees.push({ id: CoffeesService.idx++, ...createCoffeeDto });
     }
 
-    update(id: string, updateCoffeeDto: UpdateCoffeeDto) {
+    update(id: number, updateCoffeeDto: UpdateCoffeeDto) {
         const existingCoffee = this.findOne(id);
         if (!(existingCoffee instanceof NotFoundException)) {
             existingCoffee.name = updateCoffeeDto.name ?? existingCoffee.name;
